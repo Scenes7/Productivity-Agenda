@@ -1,7 +1,7 @@
 const newTaskButton = document.getElementById('btn')
 const confirmButton = document.getElementById('yesBtn')
 const exitButton = document.getElementById('noBtn')
-const createNewTaskGUI = document.getElementById("createTaskDiv");
+const createNewTask = document.getElementById("createTaskDiv");
 const description = document.getElementById("taskDescription");
 const title = document.getElementById("taskTitle");
 const allTasks = document.getElementById("allTasks");
@@ -11,7 +11,7 @@ const body = document.getElementById("body");
 
 let isDarkMode = false;
 
-createNewTaskGUI.style.display = "none";
+createNewTask.style.display = "none";
 
 let allTaskVar = window["allTaskFile"]
 
@@ -94,10 +94,10 @@ darkModeButton.addEventListener('click', () => {
 })
 
 newTaskButton.addEventListener('click', () => {
-  if (createNewTaskGUI.style.display === "none") {
-    createNewTaskGUI.style.display = "block";
+  if (createNewTask.style.display === "none") {
+    createNewTask.style.display = "block";
   } else {
-    createNewTaskGUI.style.display = "none";
+    createNewTask.style.display = "none";
   }
 });
 
@@ -105,7 +105,7 @@ confirmButton.addEventListener('click', () => {
 
   window["addTask"](title.value, description.value)
 
-  createNewTaskGUI.style.display = "none";
+  createNewTask.style.display = "none";
   const newTask = document.createElement("task")
   const textDiv = document.createElement("div")
   const newTaskTitle = document.createElement("p")
@@ -158,7 +158,7 @@ confirmButton.addEventListener('click', () => {
 })
 
 exitButton.addEventListener('click', () => {
-  createNewTaskGUI.style.display = "none";
+  createNewTask.style.display = "none";
   title.value = ""
   description.value = ""
 })

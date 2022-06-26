@@ -1,4 +1,4 @@
-const { contextBridge, ipcRenderer } = require('electron')
+const { contextBridge } = require('electron')
 const fs = require('fs')
 
 let pastTasks = JSON.parse(fs.readFileSync('storedTasks.json', 'utf8'));
