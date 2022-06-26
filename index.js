@@ -1,4 +1,5 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron')
+// const { app, BrowserWindow, ipcMain, Menu, MenuItem } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const fs = require('fs');
 
@@ -14,13 +15,26 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
-      // nodeIntegration: false //security issue
-      // contextIsolation: false //security issue
     }
   })
 
   mainWindow.loadFile('index.html')
 }
+
+// const menu = new Menu()
+// menu.append(new MenuItem({
+//   label: 'Electron',
+//   submenu: [{
+//     role: 'help',
+//     accelerator: process.platform === 'darwin' ? 'Alt+Cmd+I' : 'Alt+Shift+I',
+//     click: () => {
+//       const description = document.getElementById("taskDescription");
+//     }
+//   }]
+// }))
+
+// Menu.setApplicationMenu(menu)
+
 
 app.whenReady().then(() => {
   ipcMain.handle('openTasks', handleOpenTasks)
