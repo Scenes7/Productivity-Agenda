@@ -1,89 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <link rel="stylesheet" href="index.css">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <div class="menu" id="idid">
-      <button class="button" id="btn">
-        +
-      </button>
-      <div class="createTask" id="createTaskDiv">
-        <div class="createTaskHead">
-          <input id="taskTitle" class="taskTitleInput"/>
-          <button id="yesBtn" class="yBtn"></button>
-          <button id="noBtn" class="nBtn"></button>
-        </div>
-        <textarea id="taskDescription" cols="40" rows="5" class="taskDescriptionInput"></textarea>
-      </div>
-    </div>
-    
-    <div id="allTasks">
 
-      <!-- <task>
-        <div>
-          <p class="taskH">
-            Task Title
-          </p>
-          <p>
-            task description
-          </p>
-        </div>
-        
-        <button class="deleteButton">
-          -
-        </button>
-      </task> -->
-      
-    </div>
-    
-    <script src="./scripts.js"></script> <!--script may be needed to load at the bottom. If not, stuff under script no work-->
-    
-  </body>
-  </html>
-  
-  <!--
-    
-    <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="index.css" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-  </head>
-  <body>
-    <div class="test" id="myDIV">
-      assdjdofjasd
-    </div>
-    <div class="menu">
-        <button class="button" id="addBtn">
-          +
-        </button>
-    </div>
-    <div class="task">
-      <div>
-        <p class="taskH">
-          Task Title
-        </p>
-        <p>
-          task description
-        </p>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <link rel="stylesheet" href="index.css">
+  <title>Productivity Agenda</title>
+</head>
+
+<body>
+  <div class="menu" id="idid">
+
+
+    <button class="createButton" id="btn">
+      +
+    </button>
+    <button class="deleteAllButton" id="clearAll">
+      -
+    </button>
+    <div class="createTask" id="createTaskDiv">
+      <div class="createTaskHead">
+        <input id="taskTitle" class="taskTitleInput" />
+        <button id="yesBtn" class="yBtn"></button>
+        <button id="noBtn" class="nBtn"></button>
       </div>
-      <button class="deleteButton" type="button">
-        -
-      </button>
+      <textarea id="taskDescription" cols="40" rows="5" class="taskDescriptionInput"></textarea>
     </div>
-    <div>
-      Title: <input id="title"/>
-      <button id="btn" type="button">Set</button>
-      <script src="./renderer.js"></script>
-    </div>
-  </body>
+  </div>
+  <!--This div below is where all the asks are appended-->
+  <div id="allTasks">
+  </div>
+
+  <script src="./scripts.js"></script>
+
+</body>
+
 </html>
-
-
--->

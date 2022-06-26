@@ -1,34 +1,33 @@
-const {app, BrowserWindow, ipcMain} = require('electron')
+const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 const path = require('path')
 const fs = require('fs');
 
-// function handleSetTitle (event, title) {
-//   const webContents = event.sender
-//   const win = BrowserWindow.fromWebContents(webContents)
-//   win.setTitle(title)
-// }
+async function handleOpenTasks() {
+  fs.readFile('storedTasks.json', (err, data) => {
+    if (err) throw err;
+    let pastTasks = JSON.parse(data);
+    return pastTasks
+  });
+}
 
-function createWindow () {
+function createWindow() {
   const mainWindow = new BrowserWindow({
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'), //this is useless rn since all code in preload.js is commented
-      nodeIntegration: false
+      preload: path.join(__dirname, 'preload.js')
+      // nodeIntegration: false //security issue
+      // contextIsolation: false //security issue
     }
-  })
-
-  ipcMain.on('set-title', (event, title) => { //this code might be useless now since set title stuff isn't needed
-    const webContents = event.sender
-    const win = BrowserWindow.fromWebContents(webContents)
-    win.setTitle(title)
   })
 
   mainWindow.loadFile('index.html')
 }
 
 app.whenReady().then(() => {
-  // ipcMain.on('set-title', handleSetTitle)
+  ipcMain.handle('openTasks', handleOpenTasks)
+
+  // ipcMain.handle('dialog:openFile', handleFileOpen) //change later
   createWindow()
-  
+
   app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
@@ -40,11 +39,11 @@ app.on('window-all-closed', function () {
 
 
 
-fs.readFile('storedTasks.json', (err, data) => {
-    if (err) throw err;
-    let student = JSON.parse(data);
-    console.log(student);
-});
+// fs.readFile('storedTasks.json', (err, data) => {
+//     if (err) throw err;
+//     let student = JSON.parse(data);
+//     console.log(student);
+// });
 
 
 
